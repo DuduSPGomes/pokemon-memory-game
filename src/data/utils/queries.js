@@ -1,5 +1,5 @@
 export const getPokemons = `query pokemons {
-  pokemons(limit: 151, offset: 0) {
+  pokemons(limit: 12, offset: 0) {
     results {
       name
       artwork
