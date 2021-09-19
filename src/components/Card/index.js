@@ -26,6 +26,14 @@ export default (pokemon) => {
     card.classList.remove('untappedCard')
     card.classList.add('tappedCard')
     img.classList.add('d-none')
+
+    const pokemonType = pokemon?.types[0]?.type?.name
+
+    pokemonTypesBase.forEach((ptb) => {
+      if (ptb === pokemonType) {
+        card.classList.remove(`bg-color-${pokemon?.types[0]?.type?.name}`)
+      }
+    })
   }
 
   const Card = document.createElement('div')
@@ -33,7 +41,7 @@ export default (pokemon) => {
 
   Card.appendChild(img)
 
-  Card.classList.add('tappedCard')
+  Card.classList.add('card', 'tappedCard')
 
   Card?.addEventListener('click', () => {
     if (Card.classList.contains('tappedCard')) {
