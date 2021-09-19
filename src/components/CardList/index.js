@@ -5,7 +5,7 @@ import Card from '../Card/index.js'
  */
 
 export default (pokemons) => {
-  const CardList = document.createElement('div')
+  const CardList = document.createElement('ul')
 
   CardList.classList.add('card-list')
 

@@ -36,7 +36,7 @@ export default (pokemon) => {
     })
   }
 
-  const Card = document.createElement('div')
+  const Card = document.createElement('li')
   const img = document.createElement('img')
 
   Card.appendChild(img)

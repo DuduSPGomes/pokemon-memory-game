@@ -1,5 +1,5 @@
 export default () => {
-  const App = document.createElement('div')
+  const App = document.createElement('main')
   App.classList.add('app')
 
   document.body.append(App)
