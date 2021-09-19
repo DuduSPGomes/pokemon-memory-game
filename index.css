@@ -1,3 +1,5 @@
+@import './src/components/Header/styles.css';
+@import './src/components/Player/styles.css';
 @import './src/components/Card/styles.css';
 @import './src/components/CardList/styles.css';
 

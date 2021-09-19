@@ -1,0 +1,30 @@
+.player-name {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.player:nth-child(2) .player-name {
+  text-align: right;
+}
+
+.player-pokemons {
+  display: flex;
+  align-items: center;
+}
+
+.player-pokemon {
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 100%;
+}
+
+.player-pokemon-captured {
+  background-image: url('../../../assets/images/pokeball.png');
+  background-size: cover;
+}
+
+.player-pokemon:nth-child(n+2) {
+  margin-left: 10px;
+}

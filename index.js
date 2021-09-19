@@ -5,6 +5,7 @@ import { duplicate } from './src/utils/duplicate.js'
 import { addToLocalStorage, getLocalStorage } from './src/utils/local-storage.js'
 import App from './app.js'
 import CardList from './src/components/CardList/index.js'
+import Header from './src/components/Header/index.js'
 
 if (!getLocalStorage('@pokemons')) {
   fetchPokeApi(getPokemons)
@@ -27,11 +28,11 @@ if (!getLocalStorage('@pokemons')) {
             addToLocalStorage('@pokemons', pokemons)
           })
       })
-      App().append(CardList(pokemons))
+      App().append(Header(), CardList(pokemons))
       console.log('fetch!')
     });
 } else {
   const pokemons = JSON.parse(getLocalStorage('@pokemons'))
-  App().append(CardList(pokemons))
+  App().append(Header(), CardList(pokemons))
   console.log('not fetch!')
 }
