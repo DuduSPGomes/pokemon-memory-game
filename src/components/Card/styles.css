@@ -1,8 +1,9 @@
 .tappedCard {
   width: 150px;
-  height: 200px;
+  height: 150px;
   margin-bottom: 30px;
   background-color: grey !important;
+  border-radius: 4px;
 }
 
 .untappedCard {
@@ -11,18 +12,14 @@
   align-items: center;
   justify-content: center;
   width: 150px;
-  height: 200px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 20px;
-  color: white;
-  text-transform: capitalize;
+  height: 150px;
   margin-bottom: 30px;
+  border-radius: 4px;
 }
 
 .artwork {
-  width: 70px;
-  height: 70px;
-  margin-bottom: 30px;
+  width: 150px;
+  height: 150px;
 }
 
 .bg-color-grass {

@@ -5,7 +5,7 @@ import { pokemonTypesBase } from '../../data/constants/pokemon-types.js'
 */
 
 export default (pokemon) => {
-  const untapCard = (card, img, pokemon, text) => {
+  const untapCard = (card, img, pokemon) => {
     card.classList.remove('tappedCard')
     card.classList.add('untappedCard')
     img.src = pokemon.artwork
@@ -19,33 +19,27 @@ export default (pokemon) => {
       }
     })
 
-    text.innerText = pokemon.name
-
     img.classList.remove('d-none')
-    text.classList.remove('d-none')
   }
 
-  const tapCard = (card, img, text) => {
+  const tapCard = (card, img) => {
     card.classList.remove('untappedCard')
     card.classList.add('tappedCard')
     img.classList.add('d-none')
-    text.classList.add('d-none')
   }
 
   const Card = document.createElement('div')
   const img = document.createElement('img')
-  const text = document.createElement('div')
 
   Card.appendChild(img)
-  Card.appendChild(text)
 
   Card.classList.add('tappedCard')
 
   Card?.addEventListener('click', () => {
     if (Card.classList.contains('tappedCard')) {
-      untapCard(Card, img, pokemon, text)
+      untapCard(Card, img, pokemon)
     } else {
-      tapCard(Card, img, text)
+      tapCard(Card, img)
     }
   })
 
