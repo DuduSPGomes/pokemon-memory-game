@@ -4,7 +4,7 @@
   text-transform: uppercase;
 }
 
-.player:nth-child(3) .player-name {
+.player-2 .player-name {
   text-align: right;
 }
 
