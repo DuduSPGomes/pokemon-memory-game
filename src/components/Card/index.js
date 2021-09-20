@@ -5,6 +5,9 @@ let clickedCards = []
 let imgsOfclickedCards = []
 let pokemonOfclickedCards = []
 
+let playerOnePoints = -1
+let playerTwoPoints = -1
+
 const untapCard = (card, img, pokemon) => {
   card?.classList?.remove('tappedCard')
   card?.classList?.add('untappedCard')
@@ -44,6 +47,26 @@ const clearTapCardConstants = () => {
   clickTimes = 0
 }
 
+const checkPlayersTurn = () => {
+  if (document.querySelector(".player-1").classList.contains('turn')) {
+    document.querySelector(".player-1").classList.remove('turn')
+    document.querySelector(".player-2").classList.add('turn')
+  } else if (document.querySelector(".player-2").classList.contains('turn')) {
+    document.querySelector(".player-2").classList.remove('turn')
+    document.querySelector(".player-1").classList.add('turn')
+  }
+}
+
+const setPlayerPoints = () => {
+  if (document.querySelector('.player-1').classList.contains('turn')) {
+    playerOnePoints += 1
+    document.querySelector('.player-1 .player-pokemons').children.item(playerOnePoints).classList.add('captured')
+  } else if (document.querySelector('.player-2').classList.contains('turn')) {
+    playerTwoPoints += 1
+    document.querySelector('.player-2 .player-pokemons').children.item(playerTwoPoints).classList.add('captured')
+  }
+}
+
 
 /**
   * Returns a pokemon Card
@@ -76,11 +99,12 @@ export default (pokemon) => {
             tapCard(clickedCards[0], imgsOfclickedCards[0], pokemonOfclickedCards[0])
             tapCard(clickedCards[1], imgsOfclickedCards[1], pokemonOfclickedCards[1])
             clearTapCardConstants()
-          }, 3000)
+            checkPlayersTurn()
+          }, 2000)
         } else {
-          setTimeout(function () {
-            clearTapCardConstants()
-          }, 3000)
+          clearTapCardConstants()
+          setPlayerPoints()
+          checkPlayersTurn()
         }
       }
     }
