@@ -4,8 +4,12 @@
   text-transform: uppercase;
 }
 
-.player:nth-child(2) .player-name {
+.player:nth-child(3) .player-name {
   text-align: right;
+}
+
+.turn {
+  color: red;
 }
 
 .player-pokemons {
@@ -20,7 +24,7 @@
   border-radius: 100%;
 }
 
-.player-pokemon-captured {
+.captured {
   background-image: url('../../../assets/images/pokeball.png');
   background-size: cover;
 }
