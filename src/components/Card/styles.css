@@ -16,9 +16,14 @@
   background-position: center;
   background-repeat: no-repeat;
   border: 1px solid black;
+  transition: transform .5s;
+  transform: rotateY(0);
 }
 
-.untappedCard {}
+.untappedCard {
+  transition: transform .5s;
+  transform: rotateY(180deg);
+}
 
 .artwork {
   width: 150px;
