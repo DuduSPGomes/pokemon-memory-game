@@ -1,16 +1,16 @@
 export function shuffle (array) {
-  var currentIndex = array?.length, randomIndex;
+  var m = array.length, t, i;
 
-  // While there remain elements to shuffle...
-  while (currentIndex != 0) {
+  // While there remain elements to shuffle…
+  while (m) {
 
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
+    // Pick a remaining element…
+    i = Math.floor(Math.random() * m--);
 
     // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex], array[currentIndex]];
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
   }
 
   return array;

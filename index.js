@@ -11,8 +11,7 @@ if (!getLocalStorage('@pokemons')) {
   fetchPokeApi(getPokemons)
     .then((res) => res.json())
     .then((res) => {
-      const dup = duplicate(res.data.pokemons.results)
-      const pokemons = shuffle(dup)
+      const pokemons = duplicate(res.data.pokemons.results)
       pokemons?.map((pokemon) => {
         fetchPokeApi(getPokemon(pokemon.name))
           .then((res) => res.json())
@@ -32,7 +31,8 @@ if (!getLocalStorage('@pokemons')) {
       console.log('fetch!')
     });
 } else {
-  const pokemons = JSON.parse(getLocalStorage('@pokemons'))
+  const storagePokemons = JSON.parse(getLocalStorage('@pokemons'))
+  const pokemons = shuffle(storagePokemons)
   App().append(Header(), CardList(pokemons))
   console.log('not fetch!')
 }
