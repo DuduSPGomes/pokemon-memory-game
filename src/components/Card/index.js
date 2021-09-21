@@ -81,26 +81,30 @@ export default (pokemon) => {
 
   Card.classList.add('card', 'tappedCard')
 
+
   Card?.addEventListener('click', (e) => {
     if (Card.classList.contains('tappedCard')) {
+      // const oldTimer = document.querySelector('.timer')
       if (clickTimes < 2) {
-        console.log(clickTimes)
         untapCard(Card, img, pokemon)
         clickTimes += 1
         clickedCards.push(Card)
         imgsOfclickedCards.push(img)
         pokemonOfclickedCards.push(pokemon)
+        // oldTimer?.replaceWith(Timer('start'))
       }
     }
     if (Card.classList.contains('untappedCard')) {
+      // const oldTimer = document.querySelector('.timer')
       if (clickTimes === 2) {
+        // oldTimer?.replaceWith(Timer('stop'))
         if (pokemonOfclickedCards[0].name !== pokemonOfclickedCards[1].name) {
           setTimeout(function () {
             tapCard(clickedCards[0], imgsOfclickedCards[0], pokemonOfclickedCards[0])
             tapCard(clickedCards[1], imgsOfclickedCards[1], pokemonOfclickedCards[1])
             clearTapCardConstants()
             checkPlayersTurn()
-          }, 2000)
+          }, 1000)
         } else {
           clearTapCardConstants()
           setPlayerPoints()
