@@ -1,4 +1,4 @@
-export const getPokemons = `query pokemons {
+export const getPokemonsQuery = `query pokemons {
   pokemons(limit: 12, offset: 0) {
     results {
       name
@@ -7,7 +7,7 @@ export const getPokemons = `query pokemons {
   }
 }`;
 
-export const getPokemon = (name) => `query pokemon {
+export const getPokemonByNameQuery = (name) => `query pokemon {
   pokemon(name: "${name}") {
     name
     types {
