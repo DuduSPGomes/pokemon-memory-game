@@ -1,38 +1,14 @@
-import { getPokemon, getPokemons } from './src/data/utils/queries.js'
-import fetchPokeApi from './src/data/config/fetch.js'
-import { shuffle } from './src/utils/shuffle.js'
-import { duplicate } from './src/utils/duplicate.js'
-import { addToLocalStorage, getLocalStorage } from './src/utils/local-storage.js'
-import App from './app.js'
-import CardList from './src/components/CardList/index.js'
+import { getPokemons, getPokemonsByName } from './src/data/repositories/pokemon.repository.js'
+import { getLocalStorage } from './src/utils/local-storage.js'
 import Header from './src/components/Header/index.js'
+import CardList from './src/components/CardList/index.js'
+import App from './app.js'
 
 if (!getLocalStorage('@pokemons')) {
-  fetchPokeApi(getPokemons)
-    .then((res) => res.json())
-    .then((res) => {
-      const pokemons = duplicate(res.data.pokemons.results)
-      pokemons?.map((pokemon) => {
-        fetchPokeApi(getPokemon(pokemon.name))
-          .then((res) => res.json())
-          .then((res) => {
-            const pokemonsObj = res.data.pokemon
-            const pokemonName = pokemonsObj.name
-            const pokemonTypes = pokemonsObj.types
-            pokemons.forEach((pokemon) => {
-              if (pokemon.name === pokemonName) {
-                pokemon.types = pokemonTypes
-              }
-            })
-            addToLocalStorage('@pokemons', pokemons)
-          })
-      })
-      App().append(Header(), CardList(pokemons))
-      console.log('fetch!')
-    });
+  const pokemons = await getPokemons()
+  const pokemonsByName = await getPokemonsByName(pokemons)
+  App().append(Header(), CardList(pokemonsByName))
 } else {
   const storagePokemons = JSON.parse(getLocalStorage('@pokemons'))
-  const pokemons = shuffle(storagePokemons)
-  App().append(Header(), CardList(pokemons))
-  console.log('not fetch!')
+  App().append(Header(), CardList(storagePokemons))
 }
